@@ -91,7 +91,7 @@ nextButton.addEventListener('click', () => {
         currentQuestionIndex++;
         displayQuestion();
         nextButton.disabled = false;
-        downloadButton.disabled = true;
+        downloadButton.disabled = false;
     }
 });
 
