@@ -97,3 +97,8 @@ nextButton.addEventListener('click', () => {
 
 // Call displayQuestion() to show the first question on page load
 displayQuestion();
+
+downloadButton.addEventListener('click', () => {
+   alert("Your video has been downloaded!");
+    }
+);
