@@ -1,4 +1,3 @@
-// Global variables
 let mediaRecorder;
 let recordedChunks = [];
 let isRecording = false;
@@ -29,7 +28,6 @@ const questions = [
     "What are your salary expectations?",
     "What do you know about our company?",
     "Why should we hire you?",
-    // Add more questions as needed
 ];
 
 // Function to request camera access and start recording
@@ -37,7 +35,7 @@ async function startRecording() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         videoElement.srcObject = stream;
-        videoContainer.style.display = "block"; // Show the video container
+        videoContainer.style.display = "block";
         displayQuestion();
 
         recordedChunks = [];
@@ -72,7 +70,7 @@ function displayQuestion() {
 startStopButton.addEventListener('click', () => {
     if (!isRecording) {
         startRecording();
-        nextButton.disabled = false; // Enable the "Next Question" button
+        nextButton.disabled = false;
     }
     isRecording = !isRecording;
     startStopButton.textContent = isRecording ? 'Stop Recording' : 'Start Recording';
@@ -99,6 +97,6 @@ nextButton.addEventListener('click', () => {
 displayQuestion();
 
 downloadButton.addEventListener('click', () => {
-   alert("Your video has been downloaded!");
-    }
+    alert("Your video has been downloaded!");
+}
 );
