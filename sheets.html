@@ -1,0 +1,38 @@
+<html>
+<body>
+  Name: <input type="text" name="name" class="form-control" id="name" />
+  Email: <input type="text" name="email" class="form-control" id="email" />
+  Subject: <input type="text" name="job" class="form-control" id="job" />
+  Message: <input type="text" name="company" class="form-control" id="company" />
+  <input type="submit" id="b1" onClick="insertValue()" class="btn" value="Send message">
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+  function insertValue() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var job = $("#job").val();
+    var company = $("#company").val();
+
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbzjJKez21zuyBTDjNWSsiX1kJfW_zxqrwz4LGf-nmnCswmwmUTzn3XPfiWLteQG05O8/exec", // Update this URL
+      method: "GET",
+      data: {
+        action: "insert",
+        name: name,
+        email: email,
+        job: job,
+        company: company,
+      },
+      success: function (response) {
+        console.log("Insertion successful", response);
+      },
+      error: function (error) {
+        console.error("Error inserting data", error);
+      }
+    });
+  }
+</script>
+</html>
