@@ -15,6 +15,7 @@ const questionText = document.getElementById('questionText');
 
 // Get the buttons
 const startStopButton = document.getElementById('startStopButton');
+const pauseResumeButton = document.getElementById('pauseResumeButton');
 const downloadButton = document.getElementById('downloadButton');
 const nextButton = document.getElementById('nextButton');
 
@@ -29,6 +30,19 @@ const questions = [
     "What do you know about our company?",
     "Why should we hire you?",
 ];
+
+function playPauseVideo() {
+    if (videoElement.paused) {
+        videoElement.play();
+        playPauseButton.textContent = 'Pause';
+    } else {
+        videoElement.pause();
+        playPauseButton.textContent = 'Play';
+    }
+}
+
+// Event listener for the play/pause button
+playPauseButton.addEventListener('click', playPauseVideo);
 
 // Function to request camera access and start recording
 async function startRecording() {
@@ -71,6 +85,7 @@ startStopButton.addEventListener('click', () => {
     if (!isRecording) {
         startRecording();
         nextButton.disabled = false;
+        playPauseButton.disabled = false; // Enable play/pause button when recording starts
     }
     isRecording = !isRecording;
     startStopButton.textContent = isRecording ? 'Stop Recording' : 'Start Recording';
@@ -90,6 +105,8 @@ nextButton.addEventListener('click', () => {
         displayQuestion();
         nextButton.disabled = false;
         downloadButton.disabled = false;
+        playPauseButton.textContent = 'Play'; // Reset play/pause button text
+        videoElement.pause(); // Pause the video when moving to the next question
     }
 });
 
