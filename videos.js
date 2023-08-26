@@ -85,7 +85,8 @@ startStopButton.addEventListener('click', () => {
     if (!isRecording) {
         startRecording();
         nextButton.disabled = false;
-        playPauseButton.disabled = false; // Enable play/pause button when recording starts
+        playPauseButton.disabled = false;
+        downloadButton.disabled = false;
     }
     isRecording = !isRecording;
     startStopButton.textContent = isRecording ? 'Stop Recording' : 'Start Recording';
@@ -114,6 +115,18 @@ nextButton.addEventListener('click', () => {
 displayQuestion();
 
 downloadButton.addEventListener('click', () => {
-    alert("Your video has been downloaded!");
-}
-);
+    if (recordedChunks.length > 0) {
+        const blob = new Blob(recordedChunks, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+
+        // Set the URL and filename for the download link
+        downloadButton.href = url;
+        downloadButton.download = 'recorded-video.webm';
+
+        // Programmatically trigger the download
+        downloadButton.click();
+    } else {
+        alert("No recorded video available to download.");
+    }
+});
+
