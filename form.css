@@ -37,3 +37,21 @@
     z-index: -1;
 }
 
+.nav-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-items {
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
